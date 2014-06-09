@@ -4937,14 +4937,6 @@ th.hide-for-touch {
 .panel {
   border-radius: 3px; }
 
-.card {
-  padding: 1rem;
-  box-shadow: 0 1px 2px #aaa;
-  margin: 0 0 1rem;
-  border-radius: 3px;
-  user-select: none;
-  transform-origin: top left; }
-
 .today-list-item-name {
   vertical-align: text-top;
   font-size: 34px;
@@ -4955,13 +4947,16 @@ th.hide-for-touch {
   font-size: 20px;
   color: #736557; }
 
-.wrapper {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  font-weight: bold;
-  text-align: center; }
+.bird-bubble {
+  padding: 5%; }
+
+.guardian {
+  position: absolute;
+  height: 100%;
+  background-color: #F8F4EB; }
+
+.guardian-btn-container {
+  padding: 40px; }
+
+.guardian-btn {
+  width: 80px; }

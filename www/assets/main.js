@@ -137,7 +137,13 @@
 
 		render: function() {
 			return (
-				React.DOM.div(null )
+				React.DOM.div( {className:"guardian"}, 
+					React.DOM.img( {className:"bird-bubble", src:"imgs/birdwithbubble.png"}),
+					React.DOM.div( {className:"guardian-btn-container"}, 
+						React.DOM.img( {className:"guardian-btn", src:"imgs/NO.png"}),
+						React.DOM.img( {className:"guardian-btn", style:{float: "right"}, src:"imgs/YES.png"})
+					)
+				)
 			);
 		}
 

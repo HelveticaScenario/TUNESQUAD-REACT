@@ -1,5 +1,6 @@
 $panel-border-size: 0;
 $panel-font-color: #F8F4EB;
+$background-color: #F8F4EB;
 html, body{
 	height: 100%;
 }
@@ -75,17 +76,6 @@ html, body{
 
 }
 
-.card {
-	padding:1rem;
-	box-shadow:0 1px 2px #aaa;
-	// background:white;
-	margin:0 0 1rem;
-	border-radius:3px;
-	user-select:none;
-	// animation:fly-in-from-left .5s 1s ease both;
-	transform-origin:top left;
-}
-
 .today-list-item-name{
 	vertical-align:text-top;
 	font-size: 34px;
@@ -98,18 +88,21 @@ html, body{
 	color: #736557;
 }
 
-.wrapper {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;  
-  
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  
-  font-weight: bold;
-  text-align: center;
+.bird-bubble{
+	padding: 5%;
 }
 
+.guardian{
+	position: absolute;
+	height:100%;
+	background-color: $background-color;
+}
+
+.guardian-btn-container{
+	padding: 40px;
+}
+
+.guardian-btn{
+	width:80px;
+}
 
