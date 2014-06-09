@@ -9,7 +9,7 @@ module.exports = {
   watch: false,
   // watchDelay: 300,
   output: {
-    path: path.join(__dirname, "dist", "assets"),
+    path: path.join(__dirname, "www", "assets"),
     publicPath: "/assets/",
     // If you want to generate a filename with a hash of the content (for cache-busting)
     // filename: "main-[hash].js",
@@ -27,7 +27,11 @@ module.exports = {
       { test: /\.jpg/, loader: "url-loader?limit=10000&minetype=image/jpg" },
       { test: /\.png/, loader: "url-loader?limit=10000&minetype=image/png" },
       { test: /\.js$/, loader: "jsx-loader" },
-      { test: /\.coffee$/, loader: "jsx-loader!coffee-loader" }
+      // { test: /\.coffee$/, loader: "jsx-loader!coffee-loader" },
+      {
+        test: /\.scss$/,
+        loader: "style!css!sass?outputStyle=expanded"
+      }
     ],
     noParse: /\.min\.js/
   },

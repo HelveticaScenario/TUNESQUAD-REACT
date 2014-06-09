@@ -1,0 +1,115 @@
+$panel-border-size: 0;
+$panel-font-color: #F8F4EB;
+html, body{
+	height: 100%;
+}
+
+
+@import "foundation";
+.amp{
+	width:100%;
+	position: absolute;
+	z-index: -1000;
+}
+
+.home-content-outer{
+	position: absolute;
+	padding:27.6% 7% 9.8% 7%;
+	width: 100%;
+	height: 100%;
+	overflow:hidden;
+}
+.home-content-inner{
+	padding: 4% 2% 0% 2%;
+	overflow:scroll;
+	position: relative;
+	width:100%;
+	height:100%;
+}
+
+.today-panel{
+	@include panel(
+    // Sets the panel background color. Default: $panel-pg
+    $bg:#C2310D,
+    // Sets the panel padding amount. Default: $panel-padding
+    $padding:20px,
+    // Sets the font color based on the darkness of the bg & resets header line-heights for panels. Default: $panel-header-adjust
+    $adjust:true
+  );
+
+}
+
+.today-items-panel{
+	@include panel(
+    // Sets the panel background color. Default: $panel-pg
+    $bg:#F7BC00,
+    // Sets the panel padding amount. Default: $panel-padding
+    $padding:20px,
+    // Sets the font color based on the darkness of the bg & resets header line-heights for panels. Default: $panel-header-adjust
+    $adjust:true
+  );
+}
+
+.today-items-panel:last-child {
+	margin-bottom: 0;
+}
+
+.today-panel, .today-items-panel {
+	border-radius:3px;
+}
+
+.today{
+	background-color: #C2310D;
+}
+
+.today-title{ 
+	color: #F8F4EB;
+}
+
+.today-list-item{
+	background-color: #F7BC00;
+}
+
+.panel {
+	border-radius:3px;
+
+}
+
+.card {
+	padding:1rem;
+	box-shadow:0 1px 2px #aaa;
+	// background:white;
+	margin:0 0 1rem;
+	border-radius:3px;
+	user-select:none;
+	// animation:fly-in-from-left .5s 1s ease both;
+	transform-origin:top left;
+}
+
+.today-list-item-name{
+	vertical-align:text-top;
+	font-size: 34px;
+	color: #F8F4EB;
+}
+
+.today-list-item-time{
+	vertical-align:text-top;
+	font-size: 20px;
+	color: #736557;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;  
+  
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  
+  font-weight: bold;
+  text-align: center;
+}
+
+

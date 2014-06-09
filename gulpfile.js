@@ -32,7 +32,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('sass', function() {
-  return gulp.src('src/styles/main.scss').pipe(sass(sassConfig).on('error', gutil.log)).pipe(gulp.env.production ? minifyCSS() : gutil.noop()).pipe(gulp.env.production ? rev() : gutil.noop()).pipe(gulp.dest('dist/assets'));
+  return gulp.src('src/styles/main.scss').pipe(sass(sassConfig).on('error', gutil.log)).pipe(gulp.env.production ? minifyCSS() : gutil.noop()).pipe(gulp.env.production ? rev() : gutil.noop()).pipe(gulp.dest('www/assets'));
 });
 
 gulp.task('vendor', function() {
@@ -40,11 +40,11 @@ gulp.task('vendor', function() {
   paths = vendorPaths.map(function(p) {
     return path.resolve("./bower_components", p);
   });
-  return gulp.src(paths).pipe(gulp.dest('dist/assets/vendor'));
+  return gulp.src(paths).pipe(gulp.dest('www/assets/vendor'));
 });
 
 gulp.task('copy', function() {
-  return gulp.src(['src/**/*', '!src/scripts', '!src/scripts/**/*', '!src/styles', '!src/styles/**/*']).pipe(gulp.dest('dist'));
+  return gulp.src(['src/**/*', '!src/scripts', '!src/scripts/**/*', '!src/styles', '!src/styles/**/*']).pipe(gulp.dest('www'));
 });
 
 gulp.task('webpack', function(callback) {
@@ -58,7 +58,7 @@ gulp.task('dev', ['build'], function() {
   gulp.watch(['./src/**/*'], function(evt) {
     return gulp.run('build');
   });
-  return gulp.watch(['./dist/**/*'], function(evt) {
+  return gulp.watch(['./www/**/*'], function(evt) {
     gutil.log(gutil.colors.cyan(evt.path), 'changed');
     return servers.lr.changed({
       body: {
@@ -74,7 +74,7 @@ gulp.task('default', ['build'], function() {
   return setTimeout(function() {
     gutil.log("**********************************************");
     gutil.log("* gulp              (development build)");
-    gutil.log("* gulp clean        (rm /dist)");
+    gutil.log("* gulp clean        (rm /www)");
     gutil.log("* gulp --production (production build)");
     gutil.log("* gulp dev          (build and run dev server)");
     return gutil.log("**********************************************");
@@ -88,7 +88,7 @@ createServers = function(port, lrport) {
     return gutil.log("LiveReload listening on", lrport);
   });
   app = express();
-  app.use(express["static"](path.resolve("./dist")));
+  app.use(express["static"](path.resolve("./www")));
   app.listen(port, function() {
     return gutil.log("HTTP server listening on", port);
   });
