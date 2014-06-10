@@ -1,4 +1,4 @@
-var React = require('React');
+var React = require('react');
 // Link = require('react-router-component').Link;
 
 var Splash = React.createClass({

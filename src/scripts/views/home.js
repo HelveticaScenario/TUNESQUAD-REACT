@@ -2,7 +2,7 @@
  * @jsx React.DOM
  */
 
-var React = require('React');
+var React = require('react');
 var TodayCard = require('./todayCard');
 
 var mockData = [
@@ -18,8 +18,6 @@ var Home = React.createClass({
 				<img src="imgs/homeFull.png" className="amp"/>
 				<div className="home-content-outer">
 					<div className="home-content-inner">
-				  		<TodayCard todayData={mockData}/>
-				  		<TodayCard todayData={mockData}/>
 				  		<TodayCard todayData={mockData}/>
 			  		</div>
 			  	</div>

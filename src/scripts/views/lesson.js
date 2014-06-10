@@ -2,7 +2,7 @@
  * @jsx React.DOM
  */
 
-var React = require('React');
+var React = require('react');
 var Fluxxor = require('Fluxxor');
 var FluxChildMixin = Fluxxor.FluxChildMixin(React);
 
@@ -10,7 +10,7 @@ var Lesson = React.createClass({
 	mixins: [FluxChildMixin],
 	render: function() {
 		return (
-			<div className="guardian" onClick={this.getFlux().actions.reset}>Hello</div>
+			<div className="guardian" onTouchTap={this.getFlux().actions.reset}>Hello</div>
 		);
 	}
 

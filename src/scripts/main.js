@@ -1,9 +1,20 @@
-var React = require('React');
+var React = require('react');
+window.React = React;
+React.initializeTouchEvents(true);
 var Splash = require('./views/splash.js');
 var Home = require('./views/home.js');
 var Lesson = require('./views/lesson.js');
 var GuardianPresentPrompt = require('./views/guardianPresentPrompt.js');
 var Fluxxor = require('Fluxxor');
+var EventPluginHub = require('react/lib/EventPluginHub');
+var ResponderEventPlugin = require('./thirdparty/ResponderEventPlugin');
+var TapEventPlugin = require('./thirdparty/TapEventPlugin');
+
+EventPluginHub.injection.injectEventPluginsByName({
+  ResponderEventPlugin: ResponderEventPlugin,
+  TapEventPlugin: TapEventPlugin
+});
+
 
 
 var AppStore = Fluxxor.createStore({

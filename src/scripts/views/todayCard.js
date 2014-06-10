@@ -2,7 +2,7 @@
  * @jsx React.DOM
  */
 
-var React = require('React');
+var React = require('react');
 var Fluxxor = require('Fluxxor');
 var FluxChildMixin = Fluxxor.FluxChildMixin(React);
 
@@ -14,7 +14,7 @@ var TodayCard = React.createClass({
 		var self = this;
 		var listItems = this.props.todayData.map(function(e) {
 			return (
-				<div onClick={self.getFlux().actions.todayClick} className="today-items-panel clearfix">
+				<div onTouchTap={self.getFlux().actions.todayClick} className="today-items-panel clearfix">
 					<span className="today-list-item-name left">{e.name.toUpperCase()}</span>
 					<span className="today-list-item-time right">{e.time.toUpperCase()}</span>
 				</div>
