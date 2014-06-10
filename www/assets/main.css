@@ -4953,6 +4953,7 @@ th.hide-for-touch {
 .guardian {
   position: absolute;
   height: 100%;
+  width: 100%;
   background-color: #F8F4EB; }
 
 .guardian-btn-container {

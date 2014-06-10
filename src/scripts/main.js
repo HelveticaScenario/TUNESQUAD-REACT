@@ -1,17 +1,94 @@
 var React = require('React');
 var Splash = require('./views/splash.js');
 var Home = require('./views/home.js');
+var Lesson = require('./views/lesson.js');
 var GuardianPresentPrompt = require('./views/guardianPresentPrompt.js');
+var Fluxxor = require('Fluxxor');
+
+
+var AppStore = Fluxxor.createStore({
+  actions: {
+    "TODAY_LIST_CLICK": "onTodayClick",
+    "GUARDIAN_PROMPT_RESPONSE": "onGuardianResponse",
+    "RESET": "onReset"
+  },
+
+  initialize: function() {
+    this.path = "HOME";
+  },
+
+  onTodayClick: function(payload) {
+    this.path = "GUARDIAN";
+    this.emit("change");
+  },
+
+  onGuardianResponse: function(payload) {
+  	if(payload.present){
+  		this.path = "LESSON";
+  	} else{
+			this.path = "HOME";
+  	}
+    this.emit("change");
+  },
+
+  onReset: function() {
+  	this.path = "HOME";
+  	this.emit('change');
+  },
+
+  getState: function() {
+    return {
+      path: this.path
+    };
+  }
+});
+
+var actions = {
+  todayClick: function(student) {
+    this.dispatch("TODAY_LIST_CLICK", {student: student});
+  },
+
+  guardianResponse: function(present) {
+    this.dispatch("GUARDIAN_PROMPT_RESPONSE", {present: present});
+  },
+
+  reset: function() {
+  	this.dispatch("RESET", {});
+  }
+};
+
+var stores = {
+  AppStore: new AppStore()
+};
+
+var flux = new Fluxxor.Flux(stores, actions);
+
+var FluxMixin = Fluxxor.FluxMixin(React),
+    FluxChildMixin = Fluxxor.FluxChildMixin(React),
+    StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var App = React.createClass({
+	mixins: [FluxMixin, StoreWatchMixin("AppStore")],
+ 	getStateFromFlux: function() {
+    var flux = this.getFlux();
 
+    // Normally we'd use one key per store, but we only have one store, so
+    // we'll use the state of the store as our entire state here.
+    return flux.store("AppStore").getState();
+  },
 	render: function() {
-		return (
-			GuardianPresentPrompt()
-		);
+		console.log(this.state);
+		if(this.state.path === "GUARDIAN"){
+			return GuardianPresentPrompt();
+		} else if(this.state.path === "LESSON"){
+			return Lesson();
+		} else {
+			return Home();
+		}
+		
 	}
 
 });
 
-React.renderComponent(App(), document.getElementById('app'))
+React.renderComponent(App({flux:flux}), document.getElementById('app'))
 module.exports = App;
