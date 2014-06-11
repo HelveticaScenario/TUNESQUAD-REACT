@@ -4859,6 +4859,14 @@ th.hide-for-touch {
   th.show-for-print {
     display: table-cell !important; } }
 
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none; }
+
 html, body {
   height: 100%; }
 
@@ -4963,3 +4971,47 @@ html, body {
 
 .guardian-btn {
   width: 80px; }
+
+input[type="checkbox"] {
+  display: none; }
+
+.checked {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  position: relative; }
+
+.checked label.checked {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #F8F4EB; }
+
+.checked label.checked:after {
+  opacity: 0;
+  content: '';
+  position: absolute;
+  width: 136%;
+  height: 49%;
+  background: transparent;
+  top: 5%;
+  left: -5%;
+  border: 4px solid #54BFC6;
+  border-top: none;
+  border-right: none;
+  -webkit-transform: rotate(-53deg);
+  -moz-transform: rotate(-53deg);
+  -o-transform: rotate(-53deg);
+  -ms-transform: rotate(-53deg);
+  transform: rotate(-53deg); }
+
+.checked input[type=checkbox]:checked + label.checked:after {
+  opacity: 1; }
+
+.checkbox-label {
+  display: inline-block;
+  padding-left: 20px;
+  width: 80%; }

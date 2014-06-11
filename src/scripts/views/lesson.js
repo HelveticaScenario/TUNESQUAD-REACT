@@ -19,9 +19,19 @@ var Lesson = React.createClass({
 					<div className="panel yellow-bg white-border half-padding">
 						<div className="text-center big-text white-text spacer">ASSIGNMENT</div>
 						<div>
-							<input type="checkbox"/>
-							<label>PIECE 1</label>
+							<div className="checked">
+								<input type="checkbox" id="piece1"/>
+								<label htmlFor="piece1" className="checked"></label>
+							</div>
+							<label htmlFor="piece1" className="checkbox-label small-text" >PIECE 1</label>
 						</div>
+						<div>
+							<div className="checked">
+								<input type="checkbox" id="piece2"/>
+								<label htmlFor="piece2" className="checked"></label>
+							</div>
+							<label htmlFor="piece2" className="checkbox-label small-text" >PIECE 1</label>
+						</div> 
 					</div>
 				</div>
 				<div className="panel blue-bg half-padding">
@@ -33,6 +43,9 @@ var Lesson = React.createClass({
 					<div className="panel red-bg white-border half-padding">
 						<div className="text-center big-text white-text">NEXT LESSON</div>
 					</div>
+				</div>
+				<div className="clearfix">
+					<img className="right" src="imgs/SUBMIT.png"/>
 				</div>
 			</div>
 		);
