@@ -27,7 +27,7 @@ var AppStore = Fluxxor.createStore({
   },
 
   initialize: function() {
-    this.path = "LESSON";
+    this.path = "HOME";
   },
 
   onTodayClick: function(payload) {
