@@ -1,12 +1,43 @@
 $panel-border-size: 0;
 $panel-font-color: #F8F4EB;
-$background-color: #F8F4EB;
+$white: #F8F4EB;
+$red: #C2310D;
+$yellow:#F7BC00;
+$blue: #54BFC6;
+$brown: #736557;
+
+@import "foundation";
+
 html, body{
 	height: 100%;
 }
 
+.white-bg{background: $white ;} .white-text{color: $white ;}  
+.red-bg {background: $red ;} .red-text {color: $red;} 
+.yellow-bg {background: $yellow ;} .yellow-text {color: $yellow;} 
+.blue-bg {background: $blue ;} .blue-text{color: $blue;} 
+.brown-bg {background: $brown ;} .brown-text{color: $brown;} 
+.big-text{
+	font-size: 34px;
+}
+.small-text{
+	font-size: 20px;
+}
 
-@import "foundation";
+.fullscreen-wrap {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.padding{
+	padding: 20px;
+}
+
+.spacer{
+	margin-bottom:10px;
+}
+
 .amp{
 	width:100%;
 	position: absolute;
@@ -28,47 +59,8 @@ html, body{
 	height:100%;
 }
 
-.today-panel{
-	@include panel(
-    // Sets the panel background color. Default: $panel-pg
-    $bg:#C2310D,
-    // Sets the panel padding amount. Default: $panel-padding
-    $padding:20px,
-    // Sets the font color based on the darkness of the bg & resets header line-heights for panels. Default: $panel-header-adjust
-    $adjust:true
-  );
-
-}
-
-.today-items-panel{
-	@include panel(
-    // Sets the panel background color. Default: $panel-pg
-    $bg:#F7BC00,
-    // Sets the panel padding amount. Default: $panel-padding
-    $padding:20px,
-    // Sets the font color based on the darkness of the bg & resets header line-heights for panels. Default: $panel-header-adjust
-    $adjust:true
-  );
-}
-
-.today-items-panel:last-child {
+.panel:last-child {
 	margin-bottom: 0;
-}
-
-.today-panel, .today-items-panel {
-	border-radius:3px;
-}
-
-.today{
-	background-color: #C2310D;
-}
-
-.today-title{ 
-	color: #F8F4EB;
-}
-
-.today-list-item{
-	background-color: #F7BC00;
 }
 
 .panel {
@@ -78,7 +70,7 @@ html, body{
 
 .today-list-item-name{
 	vertical-align:text-top;
-	font-size: 34px;
+	
 	color: #F8F4EB;
 }
 
@@ -96,7 +88,7 @@ html, body{
 	position: absolute;
 	height:100%;
 	width:100%;
-	background-color: $background-color;
+	background-color: $white;
 }
 
 .guardian-btn-container{

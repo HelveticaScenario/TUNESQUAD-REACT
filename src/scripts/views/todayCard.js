@@ -14,16 +14,16 @@ var TodayCard = React.createClass({
 		var self = this;
 		var listItems = this.props.todayData.map(function(e) {
 			return (
-				<div onTouchTap={self.getFlux().actions.todayClick} className="today-items-panel clearfix">
-					<span className="today-list-item-name left">{e.name.toUpperCase()}</span>
-					<span className="today-list-item-time right">{e.time.toUpperCase()}</span>
+				<div onTouchTap={self.getFlux().actions.todayClick} className="yellow-bg panel clearfix">
+					<span className="big-text white-text">{e.name.toUpperCase()}</span>
+					<span className="small-text red-text right">{e.time.toUpperCase()}</span>
 				</div>
 				)
 		});
 		var todayList = React.DOM.div.apply(this,[{className: "today-list"}].concat(listItems));
 		return (
-			<div className="today-panel">
-				<h1 className="">TODAY</h1>
+			<div className="panel red-bg">
+				<div className="white-text big-text spacer">TODAY</div>
 				{todayList}
 			</div>
 

@@ -16,7 +16,7 @@ var GuardianPresentPrompt = React.createClass({
 	},
 	render: function() {
 		return (
-			<div className="guardian">
+			<div className="fullscreen-wrap white-bg">
 				<img className="bird-bubble" src="imgs/birdwithbubble.png"/>
 				<div className="guardian-btn-container">
 					<img onTouchTap={this.handleNo} className="guardian-btn" src="imgs/NO.png"/>

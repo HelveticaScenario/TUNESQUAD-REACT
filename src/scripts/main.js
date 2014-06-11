@@ -4,6 +4,8 @@ React.initializeTouchEvents(true);
 var Splash = require('./views/splash.js');
 var Home = require('./views/home.js');
 var Lesson = require('./views/lesson.js');
+var StudentEval = require('./views/studentEval.js');
+var OrderSupplies = require('./views/orderSupplies.js');
 var GuardianPresentPrompt = require('./views/guardianPresentPrompt.js');
 var Fluxxor = require('Fluxxor');
 var EventPluginHub = require('react/lib/EventPluginHub');
@@ -25,7 +27,7 @@ var AppStore = Fluxxor.createStore({
   },
 
   initialize: function() {
-    this.path = "HOME";
+    this.path = "LESSON";
   },
 
   onTodayClick: function(payload) {
@@ -92,7 +94,11 @@ var App = React.createClass({
 		if(this.state.path === "GUARDIAN"){
 			return GuardianPresentPrompt();
 		} else if(this.state.path === "LESSON"){
-			return Lesson();
+      return Lesson();
+    } else if(this.state.path === "STUDENT_EVAL"){
+      return StudentEval();
+    } else if(this.state.path === "ORDER_SUPPLIES"){
+			return OrderSupplies();
 		} else {
 			return Home();
 		}
