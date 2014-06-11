@@ -4898,6 +4898,9 @@ html, body {
 .small-text {
   font-size: 20px; }
 
+.white-border {
+  border: solid #F8F4EB; }
+
 .fullscreen-wrap {
   position: absolute;
   width: 100%;
@@ -4905,6 +4908,9 @@ html, body {
 
 .padding {
   padding: 20px; }
+
+.half-padding {
+  padding: 10px; }
 
 .spacer {
   margin-bottom: 10px; }

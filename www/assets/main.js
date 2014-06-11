@@ -232,11 +232,29 @@
 		render: function() {
 			return (
 				React.DOM.div( {className:"brown-bg fullscreen-wrap padding"}, 
-					React.DOM.div(null, 
+					React.DOM.div( {className:"spacer"}, 
 						React.DOM.span( {className:"white-text big-text"}, "STUDENT"),
 						React.DOM.span( {className:"blue-text small-text"}, "INSTRUMENT")
 					),
-					React.DOM.div( {className:"lesson-panel yellow-bg"})
+					React.DOM.div( {className:"panel yellow-bg half-padding"}, 
+						React.DOM.div( {className:"panel yellow-bg white-border half-padding"}, 
+							React.DOM.div( {className:"text-center big-text white-text spacer"}, "ASSIGNMENT"),
+							React.DOM.div(null, 
+								React.DOM.input( {type:"checkbox"}),
+								React.DOM.label(null, "PIECE 1")
+							)
+						)
+					),
+					React.DOM.div( {className:"panel blue-bg half-padding"}, 
+						React.DOM.div( {className:"panel blue-bg white-border half-padding"}, 
+							React.DOM.div( {className:"text-center big-text white-text"}, "NEXT LESSON")
+						)
+					),
+					React.DOM.div( {className:"panel red-bg half-padding"}, 
+						React.DOM.div( {className:"panel red-bg white-border half-padding"}, 
+							React.DOM.div( {className:"text-center big-text white-text"}, "NEXT LESSON")
+						)
+					)
 				)
 			);
 		}
@@ -15981,7 +15999,7 @@
 	 */
 	var baseCreateCallback = __webpack_require__(160),
 	    keys = __webpack_require__(118),
-	    objectTypes = __webpack_require__(161);
+	    objectTypes = __webpack_require__(163);
 
 	/**
 	 * Iterates over own enumerable properties of an object, executing the callback
@@ -16035,9 +16053,9 @@
 	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <http://lodash.com/license>
 	 */
-	var isNative = __webpack_require__(162),
+	var isNative = __webpack_require__(161),
 	    isObject = __webpack_require__(158),
-	    shimKeys = __webpack_require__(163);
+	    shimKeys = __webpack_require__(162);
 
 	/* Native method shortcuts for methods with the same name as other `lodash` methods */
 	var nativeKeys = isNative(nativeKeys = Object.keys) && nativeKeys;
@@ -19510,7 +19528,7 @@
 	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <http://lodash.com/license>
 	 */
-	var objectTypes = __webpack_require__(161);
+	var objectTypes = __webpack_require__(163);
 
 	/**
 	 * Checks if `value` is the language type of Object.
@@ -19800,32 +19818,6 @@
 	 * Available under MIT license <http://lodash.com/license>
 	 */
 
-	/** Used to determine if values are of the language type Object */
-	var objectTypes = {
-	  'boolean': false,
-	  'function': true,
-	  'object': true,
-	  'number': false,
-	  'string': false,
-	  'undefined': false
-	};
-
-	module.exports = objectTypes;
-
-
-/***/ },
-/* 162 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
-	 * Build: `lodash modularize modern exports="node" -o ./modern/`
-	 * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <http://lodash.com/license>
-	 */
-
 	/** Used for native method references */
 	var objectProto = Object.prototype;
 
@@ -19854,7 +19846,7 @@
 
 
 /***/ },
-/* 163 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19865,7 +19857,7 @@
 	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <http://lodash.com/license>
 	 */
-	var objectTypes = __webpack_require__(161);
+	var objectTypes = __webpack_require__(163);
 
 	/** Used for native method references */
 	var objectProto = Object.prototype;
@@ -19895,6 +19887,32 @@
 	};
 
 	module.exports = shimKeys;
+
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
+	 * Build: `lodash modularize modern exports="node" -o ./modern/`
+	 * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
+	 * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
+	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 * Available under MIT license <http://lodash.com/license>
+	 */
+
+	/** Used to determine if values are of the language type Object */
+	var objectTypes = {
+	  'boolean': false,
+	  'function': true,
+	  'object': true,
+	  'number': false,
+	  'string': false,
+	  'undefined': false
+	};
+
+	module.exports = objectTypes;
 
 
 /***/ },
@@ -20042,7 +20060,7 @@
 	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <http://lodash.com/license>
 	 */
-	var isNative = __webpack_require__(162);
+	var isNative = __webpack_require__(161);
 
 	/** `Object#toString` result shortcuts */
 	var arrayClass = '[object Array]';
@@ -20132,7 +20150,7 @@
 	 * Available under MIT license <http://lodash.com/license>
 	 */
 	var baseIndexOf = __webpack_require__(167),
-	    keyPrefix = __webpack_require__(189);
+	    keyPrefix = __webpack_require__(187);
 
 	/**
 	 * An implementation of `_.contains` for cache objects that mimics the return
@@ -20176,8 +20194,8 @@
 	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <http://lodash.com/license>
 	 */
-	var cachePush = __webpack_require__(187),
-	    getObject = __webpack_require__(188),
+	var cachePush = __webpack_require__(188),
+	    getObject = __webpack_require__(189),
 	    releaseObject = __webpack_require__(173);
 
 	/**
@@ -20981,7 +20999,7 @@
 	 */
 	var baseCreateCallback = __webpack_require__(160),
 	    keys = __webpack_require__(118),
-	    objectTypes = __webpack_require__(161);
+	    objectTypes = __webpack_require__(163);
 
 	/**
 	 * Assigns own enumerable properties of source object(s) to the destination
@@ -21145,7 +21163,7 @@
 	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <http://lodash.com/license>
 	 */
-	var isNative = __webpack_require__(162),
+	var isNative = __webpack_require__(161),
 	    noop = __webpack_require__(198);
 
 	/** Used as the property descriptor for `__bindData__` */
@@ -21194,7 +21212,7 @@
 	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <http://lodash.com/license>
 	 */
-	var isNative = __webpack_require__(162);
+	var isNative = __webpack_require__(161);
 
 	/** Used to detect functions containing a `this` reference */
 	var reThis = /\bthis\b/;
@@ -21244,7 +21262,7 @@
 	var forIn = __webpack_require__(199),
 	    getArray = __webpack_require__(170),
 	    isFunction = __webpack_require__(200),
-	    objectTypes = __webpack_require__(161),
+	    objectTypes = __webpack_require__(163),
 	    releaseArray = __webpack_require__(172);
 
 	/** `Object#toString` result shortcuts */
@@ -21456,7 +21474,26 @@
 	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <http://lodash.com/license>
 	 */
-	var keyPrefix = __webpack_require__(189);
+
+	/** Used to prefix keys to avoid issues with `__proto__` and properties on `Object.prototype` */
+	var keyPrefix = +new Date + '';
+
+	module.exports = keyPrefix;
+
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
+	 * Build: `lodash modularize modern exports="node" -o ./modern/`
+	 * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
+	 * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
+	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 * Available under MIT license <http://lodash.com/license>
+	 */
+	var keyPrefix = __webpack_require__(187);
 
 	/**
 	 * Adds a given value to the corresponding cache object.
@@ -21489,7 +21526,7 @@
 
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21527,25 +21564,6 @@
 	}
 
 	module.exports = getObject;
-
-
-/***/ },
-/* 189 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
-	 * Build: `lodash modularize modern exports="node" -o ./modern/`
-	 * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <http://lodash.com/license>
-	 */
-
-	/** Used to prefix keys to avoid issues with `__proto__` and properties on `Object.prototype` */
-	var keyPrefix = +new Date + '';
-
-	module.exports = keyPrefix;
 
 
 /***/ },
@@ -22122,7 +22140,7 @@
 	 * Available under MIT license <http://lodash.com/license>
 	 */
 	var baseCreateCallback = __webpack_require__(160),
-	    objectTypes = __webpack_require__(161);
+	    objectTypes = __webpack_require__(163);
 
 	/**
 	 * Iterates over own and inherited enumerable properties of an object,
@@ -22688,7 +22706,7 @@
 	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <http://lodash.com/license>
 	 */
-	var isNative = __webpack_require__(162),
+	var isNative = __webpack_require__(161),
 	    isObject = __webpack_require__(158),
 	    noop = __webpack_require__(198);
 
