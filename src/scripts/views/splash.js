@@ -1,16 +1,24 @@
+/**
+ * @jsx React.DOM
+ */
+
 var React = require('react');
-// Link = require('react-router-component').Link;
+var Fluxxor = require('Fluxxor');
+var FluxChildMixin = Fluxxor.FluxChildMixin(React);
 
 var Splash = React.createClass({
+	mixins: [FluxChildMixin],
 	componentDidMount: function() {
     this.timeOut = setTimeout((function() {
-    	
-    }), 1000); // Call a method on the mixin
+    	this.getFlux().actions.reset();
+    }).bind(this), 1000); // Call a method on the mixin
   },
 	render: function() {
 
 		return (
-				React.DOM.img({className:"splash", src:"imgs/KINGlogo.png"})
+				<div className="fullscreen-wrap white-bg">
+					<img src="imgs/KINGlogo.png" />
+				</div>
 		);
 	}
 

@@ -23,11 +23,13 @@ var AppStore = Fluxxor.createStore({
   actions: {
     "TODAY_LIST_CLICK": "onTodayClick",
     "GUARDIAN_PROMPT_RESPONSE": "onGuardianResponse",
-    "RESET": "onReset"
+    "RESET": "onReset",
+    "STUDENT_EVAL": "onLessonCompletion"
   },
 
   initialize: function() {
-    this.path = "LESSON";
+    this.path = "SPLASH";
+    // this.path = "STUDENT_EVAL";
   },
 
   onTodayClick: function(payload) {
@@ -41,6 +43,11 @@ var AppStore = Fluxxor.createStore({
   	} else{
 			this.path = "HOME";
   	}
+    this.emit("change");
+  },
+
+  onLessonCompletion: function(payload) {
+    this.path = "STUDENT_EVAL";
     this.emit("change");
   },
 
@@ -63,6 +70,10 @@ var actions = {
 
   guardianResponse: function(present) {
     this.dispatch("GUARDIAN_PROMPT_RESPONSE", {present: present});
+  },
+
+  endLesson: function(lesson) {
+    this.dispatch("STUDENT_EVAL", lesson);
   },
 
   reset: function() {
@@ -99,7 +110,9 @@ var App = React.createClass({
       return StudentEval();
     } else if(this.state.path === "ORDER_SUPPLIES"){
 			return OrderSupplies();
-		} else {
+		} else if(this.state.path === "SPLASH"){
+      return Splash();
+    } else {
 			return Home();
 		}
 		

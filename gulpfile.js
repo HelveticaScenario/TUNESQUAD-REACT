@@ -35,6 +35,8 @@ gulp.task('sass', function() {
   return gulp.src('src/styles/main.scss').pipe(sass(sassConfig).on('error', gutil.log)).pipe(gulp.env.production ? minifyCSS() : gutil.noop()).pipe(gulp.env.production ? rev() : gutil.noop()).pipe(gulp.dest('www/assets'));
 });
 
+
+
 gulp.task('vendor', function() {
   var paths;
   paths = vendorPaths.map(function(p) {
@@ -45,6 +47,10 @@ gulp.task('vendor', function() {
 
 gulp.task('copy', function() {
   return gulp.src(['src/**/*', '!src/scripts', '!src/scripts/**/*', '!src/styles', '!src/styles/**/*']).pipe(gulp.dest('www'));
+});
+
+gulp.task('fonts', function() {
+  return gulp.src(['src/styles/font/**/*']).pipe(gulp.dest('www/assets/font'));
 });
 
 gulp.task('webpack', function(callback) {
@@ -68,7 +74,7 @@ gulp.task('dev', ['build'], function() {
   });
 });
 
-gulp.task('build', ['webpack', 'sass', 'copy', 'vendor'], function() {});
+gulp.task('build', ['webpack', 'sass', 'copy', 'fonts', 'vendor'], function() {});
 
 gulp.task('default', ['build'], function() {
   return setTimeout(function() {

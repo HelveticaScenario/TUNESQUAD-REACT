@@ -8,6 +8,9 @@ var FluxChildMixin = Fluxxor.FluxChildMixin(React);
 
 var Lesson = React.createClass({
 	mixins: [FluxChildMixin],
+	handleSubmit: function(e) {
+		this.getFlux().actions.endLesson();
+	},
 	render: function() {
 		return (
 			<div className="brown-bg fullscreen-wrap padding">
@@ -44,8 +47,10 @@ var Lesson = React.createClass({
 						<div className="text-center big-text white-text">NEXT LESSON</div>
 					</div>
 				</div>
-				<div className="clearfix">
-					<img className="right" src="imgs/SUBMIT.png"/>
+				<div className="panel red-bg half-padding" onTouchTap={this.handleSubmit}>
+					<div className="panel red-bg white-border half-padding">
+						<div className="text-center big-text white-text">SUBMIT</div>
+					</div>
 				</div>
 			</div>
 		);
