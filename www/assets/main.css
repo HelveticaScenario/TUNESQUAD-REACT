@@ -5038,9 +5038,7 @@ img.center {
   justify-content: space-around; }
 
 * {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none; }
+  user-select: none !important;
+  -moz-user-select: none !important;
+  -webkit-user-select: none !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
