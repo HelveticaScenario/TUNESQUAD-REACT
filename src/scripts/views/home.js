@@ -18,6 +18,9 @@ var Home = React.createClass({
 				<div className="home-content-outer">
 					<div className="home-content-inner">
 				  		<TodayCard todayData={mockData}/>
+				  		<TodayCard todayData={mockData}/>
+				  		<TodayCard todayData={mockData}/>
+				  		<TodayCard todayData={mockData}/>
 			  		</div>
 			  	</div>
 			</div>
