@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D3D136B1-8797-4E47-B7CD-BCD882E1C2A4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>package-test</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>36117D93-20C9-45CC-86F4-7E20783AAB11</key>
+		<string>https://github.com/Thecontrarian/TUNESQUAD-REACT.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>forceios/PackageTest/package-test/package-test.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>36117D93-20C9-45CC-86F4-7E20783AAB11</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Thecontrarian/TUNESQUAD-REACT.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>36117D93-20C9-45CC-86F4-7E20783AAB11</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>36117D93-20C9-45CC-86F4-7E20783AAB11</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TUNESQUAD-REACT</string>
+		</dict>
+	</array>
+</dict>
+</plist>

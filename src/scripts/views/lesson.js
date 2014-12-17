@@ -12,34 +12,16 @@ var Lesson = React.createClass({
 		this.getFlux().actions.endLesson();
 	},
 	render: function() {
+		console.log(this.props.workspace);
+		
 		return (
 			<div className="brown-bg fullscreen-wrap padding">
-				<div className="spacer">
-					<span className="white-text big-text">STUDENT</span>
-					<span className="blue-text small-text">INSTRUMENT</span>
-				</div>
-				<div className="panel yellow-bg half-padding">
-					<div className="panel yellow-bg white-border half-padding">
-						<div className="text-center big-text white-text spacer">ASSIGNMENT</div>
-						<div>
-							<div className="checked">
-								<input type="checkbox" id="piece1"/>
-								<label htmlFor="piece1" className="checked"></label>
-							</div>
-							<label htmlFor="piece1" className="checkbox-label small-text" >PIECE 1</label>
-						</div>
-						<div>
-							<div className="checked">
-								<input type="checkbox" id="piece2"/>
-								<label htmlFor="piece2" className="checked"></label>
-							</div>
-							<label htmlFor="piece2" className="checkbox-label small-text" >PIECE 1</label>
-						</div> 
-					</div>
-				</div>
+				
+				
 				<div className="panel blue-bg half-padding">
 					<div className="panel blue-bg white-border half-padding">
 						<div className="text-center big-text white-text">NEXT LESSON</div>
+						<input type="datetime-local" name="nextLesson" />
 					</div>
 				</div>
 				<div className="panel red-bg half-padding">

@@ -32,6 +32,8 @@
   "dependencies": {
     "fluxxor": "^1.2.0",
     "lodash": "^2.4.1",
+    "moment": "^2.7.0",
+    "mori": "^0.2.6",
     "react": "^0.10.0"
   }
 }

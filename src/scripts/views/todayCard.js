@@ -5,18 +5,19 @@
 var React = require('react');
 var Fluxxor = require('Fluxxor');
 var FluxChildMixin = Fluxxor.FluxChildMixin(React);
+var _ = require('lodash');
+var moment = require('moment');
 
 var TodayCard = React.createClass({
 	mixins: [FluxChildMixin],
-
 	render: function() {
-		console.log(this.getFlux());
+		console.log(this.props)
 		var self = this;
-		var listItems = this.props.todayData.map(function(e) {
+		var listItems = this.props.todayList.map(function(e) {
 			return (
-				<div onTouchTap={self.getFlux().actions.todayClick} className="yellow-bg panel clearfix">
-					<span className="big-text white-text">{e.name.toUpperCase()}</span>
-					<span className="small-text red-text right">{e.time.toUpperCase()}</span>
+				<div onTouchTap={_.partial(self.getFlux().actions.todayClick, e)} className="yellow-bg panel clearfix">
+					<span className="big-text white-text">{e.studentName.toUpperCase()}</span>
+					<span className="small-text red-text right">{moment(e.time).format('h:mm A')}</span>
 				</div>
 				)
 		});

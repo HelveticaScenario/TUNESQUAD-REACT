@@ -5039,6 +5039,9 @@ img.center {
   justify-content: space-around; }
 
 * {
+  box-sizing: border-box !important;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   user-select: none !important;
   -moz-user-select: none !important;
   -webkit-user-select: none !important;

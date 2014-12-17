@@ -12,72 +12,115 @@ var EventPluginHub = require('react/lib/EventPluginHub');
 var ResponderEventPlugin = require('./thirdparty/ResponderEventPlugin');
 var TapEventPlugin = require('./thirdparty/TapEventPlugin');
 
+var moment = require('moment');
+
 EventPluginHub.injection.injectEventPluginsByName({
   ResponderEventPlugin: ResponderEventPlugin,
   TapEventPlugin: TapEventPlugin
 });
 
-
+var MockData = [
+  {
+    studentName: 'billy',
+    instrument: 'trumpet',
+    time: moment().add('hours', 1).toDate(),
+    pieces: ['Piece 1', 'Piece 2']
+  },
+  {
+    studentName: 'judy',
+    instrument: 'guitar',
+    time: moment().add('hours', 3).toDate(),
+    pieces: ['Piece 1', 'Piece 2']
+  },
+  {
+    studentName: 'george',
+    instrument: 'drums',
+    time: moment().add('hours', 2).toDate(),
+    pieces: ['Piece 1', 'Piece 2']
+  }
+];
 
 var AppStore = Fluxxor.createStore({
   actions: {
-    "TODAY_LIST_CLICK": "onTodayClick",
-    "GUARDIAN_PROMPT_RESPONSE": "onGuardianResponse",
-    "RESET": "onReset",
-    "STUDENT_EVAL": "onLessonCompletion"
+    'TODAY_LIST_CLICK': 'onTodayClick',
+    'GUARDIAN_PROMPT_RESPONSE': 'onGuardianResponse',
+    'RESET': 'onReset',
+    'STUDENT_EVAL': 'onLessonCompletion'
   },
 
   initialize: function() {
-    this.path = "SPLASH";
-    // this.path = "STUDENT_EVAL";
+    this.data = MockData.sort(function(a, b) {
+      return a.time - b.time;
+    });
+
+    this.path = 'SPLASH';
+    // this.path = 'STUDENT_EVAL';
   },
 
   onTodayClick: function(payload) {
-    this.path = "GUARDIAN";
-    this.emit("change");
+    this.selectedHolding = payload;
+
+    this.selectedWorkspace = {
+      name: payload.studentName,
+      instrument: payload.instrument,
+      pieces: payload.pieces.slice(0)
+    };
+    this.path = 'GUARDIAN';
+    this.emit('change');
   },
 
   onGuardianResponse: function(payload) {
-  	if(payload.present){
-  		this.path = "LESSON";
-  	} else{
-			this.path = "HOME";
-  	}
-    this.emit("change");
+    if (payload.present) {
+      this.selectedWorkspace = {
+        name: this.selectedHolding.studentName,
+        instrument: this.selectedHolding.instrument,
+        pieces: this.selectedHolding.pieces.slice(0),
+        startTime: new Date()
+      };
+      this.path = 'LESSON';
+    } else {
+      delete this.selectedHolding;
+      this.path = 'HOME';
+    }
+    this.emit('change');
   },
 
   onLessonCompletion: function(payload) {
-    this.path = "STUDENT_EVAL";
-    this.emit("change");
+    this.path = 'STUDENT_EVAL';
+    this.emit('change');
   },
 
   onReset: function() {
-  	this.path = "HOME";
-  	this.emit('change');
+    delete this.selectedHolding;
+    delete this.selectedWorkspace;
+    this.path = 'HOME';
+    this.emit('change');
   },
 
   getState: function() {
     return {
-      path: this.path
+      path: this.path,
+      data: this.data,
+      workspace: this.selectedWorkspace
     };
   }
 });
 
 var actions = {
-  todayClick: function(student) {
-    this.dispatch("TODAY_LIST_CLICK", {student: student});
+  todayClick: function(todayItem) {
+    this.dispatch('TODAY_LIST_CLICK', todayItem);
   },
 
   guardianResponse: function(present) {
-    this.dispatch("GUARDIAN_PROMPT_RESPONSE", {present: present});
+    this.dispatch('GUARDIAN_PROMPT_RESPONSE', {present: present});
   },
 
   endLesson: function(lesson) {
-    this.dispatch("STUDENT_EVAL", lesson);
+    this.dispatch('STUDENT_EVAL', lesson);
   },
 
   reset: function() {
-  	this.dispatch("RESET", {});
+    this.dispatch('RESET', {});
   }
 };
 
@@ -92,31 +135,30 @@ var FluxMixin = Fluxxor.FluxMixin(React),
     StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var App = React.createClass({
-	mixins: [FluxMixin, StoreWatchMixin("AppStore")],
- 	getStateFromFlux: function() {
+  mixins: [FluxMixin, StoreWatchMixin('AppStore')],
+  getStateFromFlux: function() {
     var flux = this.getFlux();
 
     // Normally we'd use one key per store, but we only have one store, so
     // we'll use the state of the store as our entire state here.
-    return flux.store("AppStore").getState();
+    return flux.store('AppStore').getState();
   },
-	render: function() {
-		console.log(this.state);
-		if(this.state.path === "GUARDIAN"){
-			return GuardianPresentPrompt();
-		} else if(this.state.path === "LESSON"){
-      return Lesson();
-    } else if(this.state.path === "STUDENT_EVAL"){
-      return StudentEval();
-    } else if(this.state.path === "ORDER_SUPPLIES"){
-			return OrderSupplies();
-		} else if(this.state.path === "SPLASH"){
+  render: function() {
+    console.log(this.state);
+    if (this.state.path === 'GUARDIAN') {
+      return GuardianPresentPrompt();
+    } else if (this.state.path === 'LESSON') {
+      return Lesson({workspace: this.state.workspace});
+    } else if (this.state.path === 'STUDENT_EVAL') {
+      return StudentEval({workspace: this.state.workspace});
+    } else if (this.state.path === 'ORDER_SUPPLIES') {
+      return OrderSupplies({workspace: this.state.workspace});
+    } else if (this.state.path === 'SPLASH') {
       return Splash();
     } else {
-			return Home();
-		}
-		
-	}
+      return Home({todayList: this.state.data});
+    }
+  }
 
 });
 
